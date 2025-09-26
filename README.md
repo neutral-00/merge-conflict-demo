@@ -57,13 +57,42 @@ You will get a **merge conflict error** in `conflict.txt`. Git will mark the con
   ```sh
   git mergetool --tool=vimdiff
   ```
+- another syntax is `git config merge.tool vimdiff`
 - vimdiff will show:
   - Local changes (main branch)
   - Incoming changes (branchA)
   - Base (common ancestor)
 
 - Edit and resolve the conflict using vimdiff's interface (merge, delete, or correct lines as needed).
+- Use the below key bindings:
+```
+]c                      : next conflict
+[c                      : prev conflict
+diffget [buffspec]      : get the change
+ctrl-w w                : switch windws
+ctrl-w h/j/k/l          : switch windows using direction keys
+
+```
+## Steps
+1. Go to the bottom window
+1. go to the first conflict with ]c
+1. to retain changes in your local type :diffget 1
+1. to accept changes from remote type :diffget 3
+1. if you want to undo press u
+1. save the file with :w and :qa
+1. now run `git status` to check which files have been staged
+1. commit and push. that's it.
+
+
+## Tips
+- to abort merge window discarding the changes type :cq
+- normally git will create backup files like `conflit.txt.orig`
+- if you don't want it type `git config merge.tool.keepBackupt false`
+
+
+
 - Save and exit vimdiff.
+
 - Stage and complete the merge:
   ```sh
   git add conflict.txt
