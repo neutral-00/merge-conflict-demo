@@ -1,4 +1,4 @@
-# merge-conflict-demo
+# Merge Conflict Demo
 Learn how to resolve merge conflicts using vimdiff
 
 To intentionally create a merge conflict in a GitHub repository and learn to resolve it with `vimdiff`, follow these step-by-step actions:
